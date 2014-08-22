@@ -1,0 +1,56 @@
+* {
+	
+}
+
+body {
+	background: white;
+    font:normal 12px/1.6em Arial, Helvetica, sans-serif;	
+	margin: 0;
+	padding: 0;
+}
+
+p {
+	margin: 0;
+	padding: 0;
+}
+
+#wrapper {
+	margin:0 auto;
+	width: 632px;
+	border-left:1px solid #f0e9eb;
+	border-right:1px solid #f0e9eb;
+}
+
+#header {
+
+}
+
+#header h1 {
+	text-align: center;
+}
+
+#main-content {
+	margin: 0 auto;
+}
+
+#project-bar {
+	margin: 0px 10px;
+	float: left;
+}
+
+#project-workspace {
+	width: 70%;
+	float: right;
+}
+
+#footer {
+	background:#f7f7f7;
+	border-top:1px solid #f0e9eb;
+	padding:10px 15px;
+	clear:both;
+}
+
+ul.project-list {
+	margin: 0px 10px 10px 10px;
+	list-style-type: none;
+}

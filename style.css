@@ -54,3 +54,11 @@ ul.project-list {
 	margin: 0px 10px 10px 10px;
 	list-style-type: none;
 }
+
+li:hover {
+	background:#f7f7f7;
+}
+
+input[type=number] {
+	width: 60px;
+}

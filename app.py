@@ -9,7 +9,7 @@ app.config.update(
 
 # controllers
 @app.route("/")
-def idnex():
+def index():
     return render_template("index.html")
 
 @app.route("/favicon.ico")    
@@ -18,7 +18,11 @@ def favicon():
 
 @app.errorhandler(404)
 def page_not_found(e):
-	return render_template('404'), 404	
+	return render_template('404.html'), 404	
+
+@app.route('/blog/')
+def blog():
+	return render_template("blog.html")
 
 
 # launch

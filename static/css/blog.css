@@ -2,9 +2,31 @@
  * Globals
  */
 
+html, body, .container {
+  height: 100%;
+  min-height: 100%;
+}
+
 body {
   font-family: Georgia, "Times New Roman", Times, serif;
   color: #555;
+  background-color: grey;
+}
+
+.container {
+  display: table;
+}
+
+.row {
+  height: 100%;
+  display: table-row;
+}
+
+.col-md-4 .col-md-8 {
+  display: table-cell;
+  float: none;
+  height: 100%;
+  min-height: 100%;
 }
 
 h1, .h1,
@@ -24,11 +46,11 @@ h6, .h6 {
  * Override Bootstrap's default container.
  */
 
-@media (min-width: 1200px) {
+/*@media (min-width: 1200px) {
   .container {
-    width: 970px;
+    width: 1200px;
   }
-}
+}*/
 
 
 /*
@@ -87,6 +109,7 @@ h6, .h6 {
   margin-bottom: 0;
   font-size: 60px;
   font-weight: normal;
+  text-align: center;
 }
 .blog-description {
   font-size: 20px;
@@ -98,10 +121,10 @@ h6, .h6 {
  * Main column and sidebar layout
  */
 
-.blog-main {
+/*.blog-main {
   font-size: 18px;
   line-height: 1.5;
-}
+}*/
 
 /* Sidebar modules for boxing content */
 .sidebar-module {
@@ -164,4 +187,8 @@ h6, .h6 {
 }
 .blog-footer p:last-child {
   margin-bottom: 0;
+}
+
+ul.project-list a:hover {
+  background-color: red;
 }

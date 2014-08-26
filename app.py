@@ -24,6 +24,10 @@ def page_not_found(e):
 def blog():
 	return render_template("blog.html")
 
+@app.route('/hnya/')	
+def hnya():
+	return render_template("hnya.html")
+
 
 # launch
 if __name__ == "__main__":

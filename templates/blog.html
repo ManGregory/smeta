@@ -10,11 +10,11 @@
     <title>Blog Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="shortcut icon" href="{{ url_for('static', filename='ico/favicon.ico') }}">
 
     <!-- Custom styles for this template -->
-    <link href="../static/css/blog.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/blog.css') }}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -39,15 +39,58 @@
 
     <div class="container">
 
+      <!-- 
       <div class="blog-header">
-        <h1 class="blog-title">The Bootstrap Blog</h1>
+        <h1 class="blog-title">Projects</h1>
         <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
       </div>
-
+      -->
       <div class="row">
 
-        <div class="col-sm-8 blog-main">
+        <div class="col-md-4">
+          <div class="sidebar-module sidebar-module-inset">
+            <ul class="project-list">
+              <li><a href="#">Project 1</a>
+                <ul>
+                  <li><a href="#">Room 1</a></li>
+                  <li><a href="#">Room 2</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Project 2</a></li>
+              <li><a href="#">Project 3</a></li>
+            </ul>
+          </div>
+          <!--           
+            <div class="sidebar-module">
+            <h4>Archives</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">March 2014</a></li>
+              <li><a href="#">February 2014</a></li>
+              <li><a href="#">January 2014</a></li>
+              <li><a href="#">December 2013</a></li>
+              <li><a href="#">November 2013</a></li>
+              <li><a href="#">October 2013</a></li>
+              <li><a href="#">September 2013</a></li>
+              <li><a href="#">August 2013</a></li>
+              <li><a href="#">July 2013</a></li>
+              <li><a href="#">June 2013</a></li>
+              <li><a href="#">May 2013</a></li>
+              <li><a href="#">April 2013</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Facebook</a></li>
+            </ol>
+          </div> -->
+        </div><!-- /.blog-sidebar -->
 
+        <div class="col-md-8 blog-main">
+
+        <!--   
           <div class="blog-post">
             <h2 class="blog-post-title">Sample blog post</h2>
             <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
@@ -79,7 +122,7 @@
               <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
             </ol>
             <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
-          </div><!-- /.blog-post -->
+          </div>
 
           <div class="blog-post">
             <h2 class="blog-post-title">Another blog post</h2>
@@ -91,7 +134,7 @@
             </blockquote>
             <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
             <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          </div><!-- /.blog-post -->
+          </div>
 
           <div class="blog-post">
             <h2 class="blog-post-title">New feature</h2>
@@ -105,64 +148,24 @@
             </ul>
             <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
             <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-          </div><!-- /.blog-post -->
+          </div>
 
           <ul class="pager">
             <li><a href="#">Previous</a></li>
             <li><a href="#">Next</a></li>
-          </ul>
+          </ul> 
 
-        </div><!-- /.blog-main -->
-
-        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-          <div class="sidebar-module sidebar-module-inset">
-            <h4>About</h4>
-            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-          </div>
-          <div class="sidebar-module">
-            <h4>Archives</h4>
-            <ol class="list-unstyled">
-              <li><a href="#">March 2014</a></li>
-              <li><a href="#">February 2014</a></li>
-              <li><a href="#">January 2014</a></li>
-              <li><a href="#">December 2013</a></li>
-              <li><a href="#">November 2013</a></li>
-              <li><a href="#">October 2013</a></li>
-              <li><a href="#">September 2013</a></li>
-              <li><a href="#">August 2013</a></li>
-              <li><a href="#">July 2013</a></li>
-              <li><a href="#">June 2013</a></li>
-              <li><a href="#">May 2013</a></li>
-              <li><a href="#">April 2013</a></li>
-            </ol>
-          </div>
-          <div class="sidebar-module">
-            <h4>Elsewhere</h4>
-            <ol class="list-unstyled">
-              <li><a href="#">GitHub</a></li>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Facebook</a></li>
-            </ol>
-          </div>
-        </div><!-- /.blog-sidebar -->
+        </div> 
+      -->
 
       </div><!-- /.row -->
 
     </div><!-- /.container -->
 
-    <div class="blog-footer">
-      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-      <p>
-        <a href="#">Back to top</a>
-      </p>
-    </div>
-
-
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   </body>
 </html>

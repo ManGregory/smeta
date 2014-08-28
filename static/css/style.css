@@ -1,64 +1,57 @@
 * {
-	
+  margin: 0;
+  padding: 0;
 }
 
-body {
-	background: white;
-    font:normal 12px/1.6em Arial, Helvetica, sans-serif;	
-	margin: 0;
-	padding: 0;
+html, body, .container, .row {
+  height: 100%;
+  background-color: #f2f2f2;
+  font-family: Tahoma, Geneva, sans-serif;
 }
 
-p {
-	margin: 0;
-	padding: 0;
+.col-md-2, .col-md-8 {
+  min-height: 100%;
+  height: 100%;
 }
 
-#wrapper {
-	margin:0 auto;
-	width: 632px;
-	border-left:1px solid #f0e9eb;
-	border-right:1px solid #f0e9eb;
+.col-md-2 {
+  background-color: #f2f2f2;
+  padding-right: 10px;
 }
 
-#header {
-
+.col-md-8 {
+  background-color: #FFFFFF;
 }
 
-#header h1 {
-	text-align: center;
+a, a:hover {
+  color: #393939;
+  text-decoration: none;  
 }
 
-#main-content {
-	margin: 0 auto;
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-#project-bar {
-	margin: 0px 10px;
-	float: left;
+.project-list {
+  margin-top: 10px;
+  margin-left: 60px;
 }
 
-#project-workspace {
-	width: 70%;
-	float: right;
+.project-list li {
+  margin-bottom: 0px;
 }
 
-#footer {
-	background:#f7f7f7;
-	border-top:1px solid #f0e9eb;
-	padding:10px 15px;
-	clear:both;
+.project-list li ul li a {
+  padding-left: 40px;
 }
 
-ul.project-list {
-	margin: 0px 10px 10px 10px;
-	list-style-type: none;
+.project-list a {
+  display: block;
+  padding: 6px 14px;
 }
 
-li:hover {
-	background:#f7f7f7;
-}
-
-input[type=number] {
-	width: 60px;
-}
+.project-list a:hover{
+  background-color: #fff;
+};

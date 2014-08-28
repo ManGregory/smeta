@@ -20,10 +20,6 @@ def favicon():
 def page_not_found(e):
 	return render_template('404.html'), 404	
 
-@app.route('/blog/')
-def blog():
-	return render_template("blog.html")
-
 @app.route('/hnya/')	
 def hnya():
 	return render_template("hnya.html")

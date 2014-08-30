@@ -9,14 +9,31 @@ html, body, .container, .row {
   font-family: Tahoma, Geneva, sans-serif;
 }
 
-.col-md-2, .col-md-8 {
+.col-md-3, .col-md-8 {
   min-height: 100%;
   height: 100%;
 }
 
-.col-md-2 {
+.logo, .settings { 
+  margin-top: 20px;
+}
+
+.logo {
+  margin-left: 66px;  
+}
+
+.col-md-3 hr {
+  border-color: #AFAFAF;
+  margin-left: 66px;
+}
+
+.col-md-3 {
   background-color: #f2f2f2;
   padding-right: 10px;
+}
+
+.col-md-8 hr {
+  border-color: #AFAFAF;
 }
 
 .col-md-8 {
@@ -35,7 +52,6 @@ ul {
 }
 
 .project-list {
-  margin-top: 10px;
   margin-left: 60px;
 }
 
@@ -49,9 +65,13 @@ ul {
 
 .project-list a {
   display: block;
-  padding: 6px 14px;
+  padding: 6px;
 }
 
 .project-list a:hover{
   background-color: #fff;
-};
+}
+
+.room-object {
+  padding: 3px 0px;
+}

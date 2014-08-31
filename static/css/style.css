@@ -73,5 +73,13 @@ ul {
 }
 
 .room-object {
-  padding: 3px 0px;
+  padding: 0px 0px;
 }
+
+.room-object label {
+  font-weight: normal;
+}
+
+/*.room-object input[type="number"] {
+  width: 100px;
+}*/

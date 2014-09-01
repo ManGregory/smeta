@@ -73,10 +73,10 @@ ul {
 }
 
 .room-object {
-  padding: 0px 0px;
+  padding: 0px 0px 6px 0px;
 }
 
-.room-object label {
+label {
   font-weight: normal;
 }
 

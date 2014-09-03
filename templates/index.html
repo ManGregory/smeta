@@ -57,11 +57,10 @@
                   <option value="">Window</option>
                   <option value="">Door</option>
                 </select>
-                <input type="number" id="objWidth" class="form-control input-md" min="0" step="0.01"/>
+                <input type="number" id="objWidth" class="form-control input-md calc-object" min="0" step="0.01"/>
                 <label for="objHeight"/>X</label>
-                <input type="number" id="objHeight" class="form-control input-md" min="0" step="0.01"/>
-                <select name="" id="" class="form-control input-md">
-                  <option value=""></option>
+                <input type="number" id="objHeight" class="form-control input-md calc-object" min="0" step="0.01"/>
+                <select name="" id="" class="form-control input-md calc-object">
                   <option value="">+</option>
                   <option value="">-</option>
                 </select>
@@ -75,9 +74,9 @@
              Add room object</button>      
           </form>
           <hr />
-          <div>
-            <p>Total area: <b>100</b></p>
-            <p>Total cost: <b>1000</b></p>
+          <div class="summary">
+            <div class="summary-area">Total area: <b>100</b></div>
+            <div class="summary-cost">Total cost: <b>1000</b></div>
           </div>
         </div>
       </div><!-- /.row -->
@@ -107,6 +106,33 @@
           } else {
             subProjectList.after('<ul class="project-list-sub"><li><a href="#">Room</a></li></ul>');
           }
+        });
+
+        $(document).on('click', 'ul.project-list li a', function() {
+          $('ul.project-list li a').removeClass('selected');
+          $(this).addClass('selected');
+        });
+
+        $(document).on('change', '.calc-object', function() {
+          var sum = 0;
+          $('input[type=number].calc-object').each(function(index) {
+            if (index % 2 === 0) {
+              var height = parseFloat($(this).next('input[type=number]').val());
+              alert(height);
+              var width = parseFloat($(this).val());
+              alert(width);
+              var sign = $(this).next('select option:selected').text();
+              alert(sign);
+              if (!isNaN(width) && !isNaN(height)){
+                if (sign === '+') {
+                  sum += width * height;                  
+                } else {
+                  sum -= width * height;
+                }
+              }
+            }            
+          })
+          $('.summary .summary-area b').text(sum);
         });
     </script>
   </body>

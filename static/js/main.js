@@ -1,23 +1,25 @@
-var htmlRoomObject =
-  '<li class="room-object">' +
-  '  <form class="form-inline">' +      
-  '    <select name="" id="" class="form-control input-md">' +
-  '      <option value="">Wall</option>' +
-  '      <option value="">Window</option>' +
-  '      <option value="">Door</option>' +
-  '    </select>' +
-  '    <input type="number" id="objWidth" class="form-control input-md calc-object obj-width" min="0" step="0.01"/>' +
-  '    <label for="objHeight"/>X</label>' +
-  '    <input type="number" id="objHeight" class="form-control input-md calc-object obj-height" min="0" step="0.01"/>' +
-  '    <select name="" id="" class="form-control input-md calc-object select-sign">' +
-  '      <option value="">+</option>' +
-  '      <option value="">-</option>' +
-  '    </select>' +
-  '    <button type="button" class="btn btn-default btn-md delete-room-object"><span class="glyphicon glyphicon-trash"></span> Delete</button>' +
-  '  </form>' +
-  '</li>';
-
-var htmlProject = '<li><a href="#">Project 2</a></li>';  
+var Html = {
+  RoomObject :
+    '<li class="room-object">' +
+    '  <form class="form-inline">' +      
+    '    <select name="" id="" class="form-control input-md">' +
+    '      <option value="" selected="selected">Wall</option>' +    
+    '      <option value="">Window</option>' +
+    '      <option value="">Door</option>' +
+    '    </select>' +
+    '    <input type="number" class="form-control input-md calc-object obj-width" min="0" step="0.01" value="1"/>' +
+    '    <label>X' +
+    '    <input type="number" class="form-control input-md calc-object obj-height" min="0" step="0.01" value="1"/>' + 
+    '    </label>' +
+    '    <select name="" id="" class="form-control input-md calc-object select-sign">' +
+    '      <option value="">+</option>' +
+    '      <option value="">-</option>' +
+    '    </select>' +
+    '    <button type="button" class="btn btn-default btn-md delete-room-object"><span class="glyphicon glyphicon-trash"></span> Delete</button>' +
+    '  </form>' +
+    '</li>',
+  Project : '<li><a href="#">Project 2</a></li>'
+};
 
 function calcArea() {
   var sum = 0;
@@ -42,7 +44,7 @@ function setAreaValue(area) {
 }
 
 function addRoomObject() {
-  $("#room-objects").append(htmlRoomObject);
+  $("#room-objects").append(Html.RoomObject);
 }
 
 function deleteRoomObject(roomObject) {
@@ -51,7 +53,7 @@ function deleteRoomObject(roomObject) {
 
 function addProject() {
   $(".project-list").
-      append(htmlProject);  
+      append(Html.Project);  
 }
 
 function bindEvents() {
@@ -77,7 +79,7 @@ function bindEvents() {
       subProjectList.after('<ul class="project-list-sub"><li><a href="#">Room</a></li></ul>');
     }
   });
-    
+
   $(document).on('click', 'ul.project-list li a', function() {
     $('ul.project-list li a').removeClass('selected');
     $(this).addClass('selected');

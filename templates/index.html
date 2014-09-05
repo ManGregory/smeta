@@ -25,7 +25,7 @@
   <body>
     <div class="container">
       <div class="row">        
-        <div class="col-md-3">
+        <div class="col-md-3 col-sm-3">
           <div class="logo">
             <p>Logo</p>
           </div>
@@ -43,39 +43,24 @@
           </div>
         </div>
 
-        <div class="col-md-8">
-          <div class="settings">
-            <p>Settings</p>
-          </div>
-          <hr>
-          <ul id="room-objects">
-            <li class="room-object">
-              <form class="form-inline">      
-                <select name="" id="" class="form-control input-md">
-                  <option value="">Wall</option>
-                  <option value="">Window</option>
-                  <option value="">Door</option>
-                </select>
-                <input type="number" id="objWidth" class="form-control input-md calc-object obj-width" min="0" step="0.01"/>
-                <label for="objHeight"/>X</label>
-                <input type="number" id="objHeight" class="form-control input-md calc-object obj-height" min="0" step="0.01"/>
-                <select name="" id="" class="form-control input-md calc-object select-sign">
-                  <option value="">+</option>
-                  <option value="">-</option>
-                </select>
-                <button type="button" class="btn btn-default btn-md delete-room-object"><span class="glyphicon glyphicon-trash"></span> Delete</button>     
-              </form>
-            </li>
-          </ul>
-          <hr style="margin-top: 12px;" />
-          <form action="" class="form-inline">
-            <button type="button" class="btn btn-default btn-md" id="addNewRoomObject"><span class="glyphicon glyphicon-plus"></span>
-             Add room object</button>      
-          </form>
-          <hr />
-          <div class="summary">
-            <div class="summary-area">Total area: <b>100</b></div>
-            <div class="summary-cost">Total cost: <b>1000</b></div>
+        <div class="col-md-8 col-sm-8 sidebar">
+          <div class="">
+            <div class="settings">
+              <p>Settings</p>
+            </div>
+            <hr>
+            <ul id="room-objects">
+            </ul>
+            <hr style="margin-top: 12px;" />
+            <form action="" class="form-inline">
+              <button type="button" class="btn btn-default btn-md" id="addNewRoomObject"><span class="glyphicon glyphicon-plus"></span>
+               Add room object</button>      
+            </form>
+            <hr />
+            <div class="summary">
+              <div class="summary-area">Total area: <b>100</b></div>
+              <div class="summary-cost">Total cost: <b>1000</b></div>
+            </div>
           </div>
         </div>
       </div><!-- /.row -->
@@ -88,10 +73,10 @@
     <script type="text/javascript">
       bindEvents();
       $( document ).ready(function() {
-        setAreaValue(calcArea());
         // addProject()
         // addRoom()
-        // addNewRoomObject();        
+        addRoomObject();          
+        setAreaValue(calcArea());      
       });            
     </script>
   </body>

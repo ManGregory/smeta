@@ -15,7 +15,6 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -85,64 +84,15 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js')}}"></script>        
     <script type="text/javascript">
-      function calcArea() {
-        var sum = 0;
-        var sign = '+'
-        $('.room-object form').each(function(index) {            
-          var height = parseFloat($(this).find('.obj-height').val());
-          var width = parseFloat($(this).find('.obj-width').val());
-          if (!isNaN(width) && !isNaN(height)){
-            if (sign === '+') {
-              sum += width * height;                  
-            } else {
-              sum -= width * height;
-            }
-          }
-          sign = $(this).find('select.select-sign option:selected').text();
-        });
-        return sum;
-      }
-
-      function setAreaValue(area) {
-        $('.summary .summary-area b').text(area);
-      }
-
+      bindEvents();
       $( document ).ready(function() {
         setAreaValue(calcArea());
-      });
-
-      $("#addNewRoomObject").click(function() {
-        $("#room-objects").
-          append("<li class=\"room-object\">" + $(".room-object").html() + "</li>");
-      });
-
-      $(document).on('click','button.delete-room-object',function(){
-        $(this).parents(".room-object").remove();
-        setAreaValue(calcArea());
-      });
-      $(document).on('click', '#addProject', function(){
-        $(".project-list").
-          append('<li><a href="#">Project 2</a></li>');
-      });
-      $(document).on('click', '#addRoom', function(){
-        var subProjectList = $(".project-list a.selected");
-        var ul = subProjectList.next();
-        if (ul.attr("class") !== undefined){
-          ul.append('<li><a href="#">Room</a></li>');
-        } else {
-          subProjectList.after('<ul class="project-list-sub"><li><a href="#">Room</a></li></ul>');
-        }
-      });
-
-      $(document).on('click', 'ul.project-list li a', function() {
-        $('ul.project-list li a').removeClass('selected');
-        $(this).addClass('selected');
-      });
-
-      $(document).on('change', '.calc-object', function() {
-        setAreaValue(calcArea());
-      });              
+        // addProject()
+        // addRoom()
+        // addNewRoomObject();        
+      });            
     </script>
   </body>
 </html>

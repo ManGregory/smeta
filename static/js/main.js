@@ -7,9 +7,9 @@ var Html = {
     '      <option value="">Window</option>' +
     '      <option value="">Door</option>' +
     '    </select>' +
-    '    <input type="number" class="form-control input-md calc-object obj-width" min="0" step="0.01" value="1"/>' +
+    '    <input class="form-control input-md calc-object obj-width" value="1"/>' +  
     '    <label>X' +
-    '    <input type="number" class="form-control input-md calc-object obj-height" min="0" step="0.01" value="1"/>' + 
+    '    <input class="form-control input-md calc-object obj-height" value="1"/>' + 
     '    </label>' +
     '    <select name="" id="" class="form-control input-md calc-object select-sign">' +
     '      <option value="">+</option>' +
@@ -74,11 +74,14 @@ function setAreaValue(area) {
 }
 
 function addRoomObject() {
-  $("#room-objects").append(Html.RoomObject);
+  $("#room-objects").append(Html.RoomObject);  
+  setAreaValue(calcArea());    
+  setMasks();
 }
 
 function deleteRoomObject(roomObject) {
   roomObject.parents(".room-object").remove();
+  setAreaValue(calcArea());    
 }
 
 function addProject(isSelected) {
@@ -133,6 +136,106 @@ function bindEvents() {
   });  
 }
 
+function setGlobalize() {
+  Globalize.load({
+    "main": {
+      "en": {
+        "identity": {
+          "version": {
+            "_cldrVersion": "25",
+            "_number": "$Revision: 91 $"
+          },
+          "generation": {
+            "_date": "$Date: 2014-03-13 22:27:12 -0500 (Thu, 13 Mar 2014) $"
+          },
+          "language": "en"
+        },
+        "dates": {
+          "calendars": {
+            "gregorian": {
+              "months": {
+                "format": {
+                  "abbreviated": {
+                    "1": "Jan",
+                    "2": "Feb",
+                    "3": "Mar",
+                    "4": "Apr",
+                    "5": "May",
+                    "6": "Jun",
+                    "7": "Jul",
+                    "8": "Aug",
+                    "9": "Sep",
+                    "10": "Oct",
+                    "11": "Nov",
+                    "12": "Dec"
+                  }
+                }
+              },
+              "dayPeriods": {
+                "format": {
+                  "wide": {
+                    "am": "AM",
+                    "am-alt-variant": "am",
+                    "noon": "noon",
+                    "pm": "PM",
+                    "pm-alt-variant": "pm"
+                  }
+                }
+              },
+              "dateFormats": {
+                "medium": "MMM d, y"
+              },
+              "timeFormats": {
+                "medium": "h:mm:ss a",
+              },
+              "dateTimeFormats": {
+                "medium": "{1}, {0}"
+              }
+            }
+          }
+        },
+        "numbers": {
+          "defaultNumberingSystem": "latn",
+          "symbols-numberSystem-latn": {
+            "group": ","
+          },
+          "decimalFormats-numberSystem-latn": {
+            "standard": "#,##0.###"
+          }
+        }
+      }
+    },
+    "supplemental": {
+      "version": {
+        "_cldrVersion": "25",
+        "_number": "$Revision: 91 $"
+      },
+      "likelySubtags": {
+        "en": "en-Latn-US",
+      },
+      "plurals-type-cardinal": {
+        "en": {
+          "pluralRule-count-one": "i = 1 and v = 0 @integer 1",
+          "pluralRule-count-other": " @integer 0, 2~16, 100, 1000, 10000, 100000, 1000000, … @decimal 0.0~1.5, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0, …"
+        }
+      }
+    }
+  }); 
+  Globalize.locale( "en" );
+  // Use Globalize to format dates.
+  console.log( Globalize.formatDate( new Date(), { datetime: "medium" } ) );
+
+  // Use Globalize to format numbers.
+  console.log( Globalize.formatNumber( 12345 ) );
+
+  // Use Globalize to format a message with plural inflection.
+  console.log( Globalize.formatPlural( 12345, {
+    one: "{0} result",
+    other: "{0} results"
+  }));
+}
+
 function setMasks(){
-  $('input[type=number]').mask('000.000.000.000.000,00', {reverse: false});
+  $('.obj-width').inputmask('decimal');
+  $('.obj-height').inputmask('decimal');
 }

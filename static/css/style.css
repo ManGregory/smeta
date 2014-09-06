@@ -85,7 +85,7 @@ ul {
   padding: 0px 0px 6px 0px;
 }
 
-.room-object input[type=number] {
+.room-object input.obj-width, .room-object input.obj-height {
   width: 100px;
 }
 

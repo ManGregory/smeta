@@ -32,10 +32,10 @@
           <div class="project-side">
             <hr />
             <ul class="project-list">
-              <li><a href="#"  class="selected">Project 1 && Project 751</a>
-              </li>
-              <li><a href="#">Project 2</a></li>
-              <li><a href="#">Project 3</a></li>            
+<!--               <li><a href="#" class="selected">Project 1 && Project 751</a>
+         </li>
+         <li><a href="#">Project 2</a></li>
+         <li><a href="#">Project 3</a></li>    -->         
             </ul>
             <hr />            
             <a class="btn btn-default btn-md" id="addProject">Add project</a>        
@@ -69,14 +69,15 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/vendor/handlebars-v2.0.0.js')}}"></script>  
+    <script src="{{ url_for('static', filename='js/vendor/jquery.mask.min.js')}}"></script>              
     <script src="{{ url_for('static', filename='js/main.js')}}"></script>        
-    <script type="text/javascript">
+    <script type="text/javascript">      
       bindEvents();
       $( document ).ready(function() {
-        // addProject()
-        // addRoom()
-        addRoomObject();          
+        createNewWorkspace();         
         setAreaValue(calcArea());      
+        setMasks();
       });            
     </script>
   </body>

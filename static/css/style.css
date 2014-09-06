@@ -61,6 +61,7 @@ ul {
 
 .project-list li {
   margin-bottom: 0px;
+  padding-bottom: 5px;
 }
 
 .project-list a.selected {
@@ -77,7 +78,7 @@ ul {
 }
 
 .project-list a:hover{
-  background-color: #fff;
+  background-color: #f9f9f9;
 }
 
 .room-object {

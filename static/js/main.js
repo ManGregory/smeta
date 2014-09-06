@@ -18,8 +18,38 @@ var Html = {
     '    <button type="button" class="btn btn-default btn-md delete-room-object"><span class="glyphicon glyphicon-trash"></span> Delete</button>' +
     '  </form>' +
     '</li>',
-  Project : '<li><a href="#">Project 2</a></li>'
+  Project : '<li><a href="#">Project {{projectNum}}</a></li>',
+  SelectedProject : '<li><a href="#" class="selected">Project {{projectNum}}</a></li>',
+  Room : '<li><a href="#">Room {{roomNum}}</a></li>',
+  FirstRoom : '<ul class="project-list-sub"><li><a href="#">Room {{roomNum}}</a></li></ul>'
 };
+
+var projectCount = 1;
+var roomCount = 1;
+
+function getProjectCount() {
+  return projectCount;
+}
+
+function setProjectCount(value) {
+  projectCount = value;
+}
+
+function getNextProjectNum() {
+  return projectCount++;
+}
+
+function getRoomCount() {
+  return roomCount;
+}
+
+function setProjectCount(value) {
+  roomCount = value;
+}
+
+function getNextRoomNum() {
+  return roomCount++;
+}
 
 function calcArea() {
   var sum = 0;
@@ -51,9 +81,28 @@ function deleteRoomObject(roomObject) {
   roomObject.parents(".room-object").remove();
 }
 
-function addProject() {
+function addProject(isSelected) {
   $(".project-list").
-      append(Html.Project);  
+    append(Handlebars.compile(isSelected ? Html.SelectedProject : Html.Project)({"projectNum" : getNextProjectNum()}));  
+}
+
+function getSelectedProject(){
+  return subProjectList = $(".project-list a.selected");
+}
+
+function addRoom(project) {
+  var ul = subProjectList.next();
+  if (ul.attr("class") !== undefined){
+    ul.append(Handlebars.compile(Html.Room)({"roomNum" : getNextRoomNum()}));
+  } else {
+    subProjectList.after(Handlebars.compile(Html.FirstRoom)({"roomNum" : getNextRoomNum()}));
+  }
+}
+
+function createNewWorkspace() {
+  addProject(true);    
+  addRoom(getSelectedProject());    
+  addRoomObject();   
 }
 
 function bindEvents() {
@@ -71,13 +120,7 @@ function bindEvents() {
   });  
 
   $(document).on('click', '#addRoom', function(){
-    var subProjectList = $(".project-list a.selected");
-    var ul = subProjectList.next();
-    if (ul.attr("class") !== undefined){
-      ul.append('<li><a href="#">Room</a></li>');
-    } else {
-      subProjectList.after('<ul class="project-list-sub"><li><a href="#">Room</a></li></ul>');
-    }
+    addRoom(getSelectedProject());
   });
 
   $(document).on('click', 'ul.project-list li a', function() {
@@ -88,4 +131,8 @@ function bindEvents() {
   $(document).on('change', '.calc-object', function() {
     setAreaValue(calcArea());
   });  
+}
+
+function setMasks(){
+  $('input[type=number]').mask('000.000.000.000.000,00', {reverse: false});
 }

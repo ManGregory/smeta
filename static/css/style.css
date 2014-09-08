@@ -61,14 +61,40 @@ ul {
 
 .project-list li {
   margin-bottom: 0px;
-  padding-bottom: 5px;
 }
 
-.project-list a.selected {
+.project-list li table.selected {
   background-color: #fff;
 }
 
-.project-list li ul li a {
+.project-list li:hover {
+  background-color: #f9f9f9; 
+}
+
+/*.project-list a.selected {
+  background-color: #fff;
+}*/
+
+.project-list table.project-table {
+  width: 100%;
+  border: none;
+}
+
+.project-list table.project-table td.project-name {
+  width: 80%;
+}
+
+.project-list table.project-table td.project-dropdown {
+  width: 20%;
+  text-align: center;   
+  vertical-align: middle;  
+}
+
+.project-list table.project-table td.project-dropdown:hover {
+  background-color: #fff;
+}
+
+ul.project-list-sub table.project-table td.project-name a{
   padding-left: 40px;
 }
 
@@ -77,9 +103,9 @@ ul {
   padding: 6px;
 }
 
-.project-list a:hover{
+/*.project-list a:hover{
   background-color: #f9f9f9;
-}
+}*/
 
 .room-object {
   padding: 0px 0px 6px 0px;

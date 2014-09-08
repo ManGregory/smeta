@@ -18,10 +18,96 @@ var Html = {
     '    <button type="button" class="btn btn-default btn-md delete-room-object"><span class="glyphicon glyphicon-trash"></span> Delete</button>' +
     '  </form>' +
     '</li>',
-  Project : '<li><a href="#">Project {{projectNum}}</a></li>',
-  SelectedProject : '<li><a href="#" class="selected">Project {{projectNum}}</a></li>',
-  Room : '<li><a href="#">Room {{roomNum}}</a></li>',
-  FirstRoom : '<ul class="project-list-sub"><li><a href="#">Room {{roomNum}}</a></li></ul>'
+  Project : 
+    '<li>' +
+    '  <table class="project-table">' +
+    '    <tr>' +
+    '      <td class="project-name"><a href="#">Project {{projectNum}}</a> </td>' +
+    '      <td class="project-dropdown">' +
+    '        <ul>' +
+    '          <li class="dropdown">          ' +            
+    '            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="caret"></span></a>' +
+    '            <ul class="dropdown-menu">' +
+    '              <li><a href="#">Add above</a></li>' +
+    '              <li><a href="#">Add below</a></li>' +
+    '              <li><a href="#" class=".add-room">Add room</a></li>' +
+    '              <li><a href="#">Rename</a></li>' +                            
+    '              <li class="divider"></li>' +
+    '              <li><a href="#">Delete</a></li>' +
+    '            </ul>' +
+    '          </li>' +
+    '        </ul>' +
+    '      </td>' +
+    '    </tr>' +
+    '  </table>' +
+    '</li>',       
+  SelectedProject : 
+    '<li>' +
+    '  <table class="project-table selected">' +
+    '    <tr>' +
+    '      <td class="project-name"><a href="#" class="selected">Project {{projectNum}}</a></td>' +
+    '      <td class="project-dropdown">' +
+    '        <ul>' +
+    '          <li class="dropdown">          ' +            
+    '            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="caret"></span></a>' +
+    '            <ul class="dropdown-menu">' +
+    '              <li><a href="#">Add above</a></li>' +
+    '              <li><a href="#">Add below</a></li>' +
+    '              <li><a href="#" class=".add-room">Add room</a></li>' +
+    '              <li><a href="#">Rename</a></li>' +                            
+    '              <li class="divider"></li>' +
+    '              <li><a href="#">Delete</a></li>' +
+    '            </ul>' +
+    '          </li>' +
+    '        </ul>' +
+    '      </td>' +
+    '    </tr>' +
+    '  </table>' +
+    '</li>',
+  Room : 
+    '<li>' +
+    '  <table class="project-table">' +
+    '    <tr>' +
+    '      <td class="project-name"><a href="#">Room {{roomNum}}</a></td>' +
+    '      <td class="project-dropdown">' +
+    '        <ul>' +
+    '          <li class="dropdown">          ' +            
+    '            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="caret"></span></a>' +
+    '            <ul class="dropdown-menu">' +
+    '              <li><a href="#">Add above</a></li>' +
+    '              <li><a href="#">Add below</a></li>' +
+    '              <li><a href="#">Rename</a></li>' +                            
+    '              <li class="divider"></li>' +
+    '              <li><a href="#">Delete</a></li>' +
+    '            </ul>' +
+    '          </li>' +
+    '        </ul>' +
+    '      </td>' +
+    '    </tr>' +
+    '  </table>' +
+    '</li>',
+  FirstRoom :   
+    '<ul class="project-list-sub"><li>' +
+    '  <table class="project-table">' +
+    '    <tr>' +
+    '      <td class="project-name"><a href="#">Room {{roomNum}}</a></td>' +
+    '      <td class="project-dropdown">' +
+    '        <ul>' +
+    '          <li class="dropdown">          ' +            
+    '            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="caret"></span></a>' +
+    '            <ul class="dropdown-menu">' +
+    '              <li><a href="#">Add above</a></li>' +
+    '              <li><a href="#">Add below</a></li>' +
+    '              <li><a href="#">Rename</a></li>' +                            
+    '              <li class="divider"></li>' +
+    '              <li><a href="#">Delete</a></li>' +
+    '            </ul>' +
+    '          </li>' +
+    '        </ul>' +
+    '      </td>' +
+    '    </tr>' +
+    '  </table>' +
+    '</li></ul>'  
 };
 
 var projectCount = 1;
@@ -90,45 +176,47 @@ function addProject(isSelected) {
 }
 
 function getSelectedProject(){
-  return subProjectList = $(".project-list a.selected");
+  return $(".project-list li table.selected").parent();
 }
 
 function addRoom(project) {
-  var ul = subProjectList.next();
+  var ul = project.children("ul.project-list-sub");
   if (ul.attr("class") !== undefined){
     ul.append(Handlebars.compile(Html.Room)({"roomNum" : getNextRoomNum()}));
   } else {
-    subProjectList.after(Handlebars.compile(Html.FirstRoom)({"roomNum" : getNextRoomNum()}));
+    project.append(Handlebars.compile(Html.FirstRoom)({"roomNum" : getNextRoomNum()}));
   }
 }
 
 function createNewWorkspace() {
   addProject(true);    
-  addRoom(getSelectedProject());    
+  //addRoom(getSelectedProject());    
   addRoomObject();   
 }
 
+function makeSelected(obj) {
+  $('ul.project-list li table').removeClass('selected');
+  $(obj).addClass('selected');
+}
+
 function bindEvents() {
-  $("#addNewRoomObject").click(function() {
-    addRoomObject();
-  });
+  $("#addNewRoomObject").click(addRoomObject);
 
   $(document).on('click','button.delete-room-object',function(){
     deleteRoomObject($(this));
     setAreaValue(calcArea());
   });
 
-  $(document).on('click', '#addProject', function(){
-    addProject();
-  });  
+  $(document).on('click', '#addProject', function() {
+    addProject(false);
+  });
 
-  $(document).on('click', '#addRoom', function(){
+  $(document).on('click', '.add-room', function(){
     addRoom(getSelectedProject());
   });
 
-  $(document).on('click', 'ul.project-list li a', function() {
-    $('ul.project-list li a').removeClass('selected');
-    $(this).addClass('selected');
+  $(document).on('click', 'ul.project-list li table', function() {
+    makeSelected(this);
   });
 
   $(document).on('change', '.calc-object', function() {

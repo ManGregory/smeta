@@ -190,7 +190,7 @@ function addRoom(project) {
 
 function createNewWorkspace() {
   addProject(true);    
-  //addRoom(getSelectedProject());    
+  addRoom(getSelectedProject());    
   addRoomObject();   
 }
 

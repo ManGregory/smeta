@@ -10,7 +10,15 @@ app.config.update(
 # controllers
 @app.route("/")
 def index():
-    return render_template("index.html")
+	projects = [
+		{
+			'name' : 'Project 1'
+		},
+		{
+			'name' : 'Project 2'
+		}
+	]
+	return render_template("index.html", projects = projects)
 
 @app.route("/favicon.ico")    
 def favicon():
@@ -19,11 +27,6 @@ def favicon():
 @app.errorhandler(404)
 def page_not_found(e):
 	return render_template('404.html'), 404	
-
-@app.route('/hnya/')	
-def hnya():
-	return render_template("hnya.html")
-
 
 # launch
 if __name__ == "__main__":

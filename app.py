@@ -1,10 +1,12 @@
 import os
 from flask import Flask, render_template, send_from_directory
+from forms import LoginForm
 
 # initialization
 app = Flask(__name__)
+app.config.from_object('config')
 app.config.update(
-    DEBUG = True,
+    DEBUG = True
 )
 
 # controllers
@@ -19,6 +21,13 @@ def index():
 		}
 	]
 	return render_template("index.html", projects = projects)
+
+@app.route("/login", methods = ['GET', 'POST'])
+def login():
+	form = LoginForm()
+	return render_template('login.html',
+		title = 'Sign in',
+		form = form)	
 
 @app.route("/favicon.ico")    
 def favicon():

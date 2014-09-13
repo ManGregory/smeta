@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, flash, redirect, session, url_for, request, g
 from forms import LoginForm
 
 # initialization
@@ -11,6 +11,7 @@ app.config.update(
 
 # controllers
 @app.route("/")
+@app.route("/index")
 def index():
 	projects = [
 		{
@@ -25,9 +26,12 @@ def index():
 @app.route("/login", methods = ['GET', 'POST'])
 def login():
 	form = LoginForm()
+	if form.validate_on_submit():
+	 	return redirect(url_for('index'))
 	return render_template('login.html',
 		title = 'Sign in',
-		form = form)	
+		form = form,
+		providers = app.config['OPENID_PROVIDERS'])
 
 @app.route("/favicon.ico")    
 def favicon():
